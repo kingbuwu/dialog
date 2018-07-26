@@ -1,0 +1,3 @@
+<import src="../template-dialog/index.wxml"/>
+<template is="dialog" data="{{qdDialog:qdDialog}}"></template>
+<button bindtap='openDialog'>点击弹框</button>

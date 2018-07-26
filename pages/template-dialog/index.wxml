@@ -1,0 +1,24 @@
+<template name="dialog">
+  <view class="qd-dialog {{ qdDialog.show ? 'qd-dialog--show' : '' }}">
+    <view class="qd-dialog--mask" bindtap='closeDialog'></view>
+    <view class="qd-dialog--container">
+      <view wx:if="{{ qdDialog.title }}" class="qd-dialog__header">{{ qdDialog.title }}</view>
+      <view class="qd-dialog__content {{ qdDialog.title ? 'qd-dialog__content--title' : '' }}">
+        <view class='qd-dialog_title' wx:if="{{qdDialog.imgsrc}}">
+          <image class='qdimg' mode='widthFix' src='{{qdDialog.imgsrc}}'></image>
+        </view>
+        <view class='qd-dialog_title'>
+          <text>{{ qdDialog.content }}</text>
+        </view>
+        <view class='qd-dialog_title' wx:if="{{qdDialog.input}}">
+          <input class='qd_input' placeholder-style="text-align: center;" placeholder='输入框'></input>
+        </view>
+      </view>
+      <view class="qd-dialog__footer {{ qdDialog.buttonsShowVertical ? 'qd-dialog__footer--vertical' : 'qd-dialog__footer--horizon' }}">
+        <block wx:for="{{ qdDialog.buttons }}" wx:key="{{ item.text }}-{{ item.types }}">
+          <button class="qd-dialog__button qd-btn" data-types="{{ item.types }}" catchtap="closeDialog" style="color: {{ item.color || '#333' }}">{{ item.text }}</button>
+        </block>
+      </view>
+    </view>
+  </view>
+</template>
